@@ -53,7 +53,9 @@ $end = end($self_explode);
     <link href="../assets/lib/medium-editor/medium-editor.css" rel="stylesheet">
     <link href="../assets/lib/medium-editor/default.css" rel="stylesheet">
     <link href="../assets/lib/summernote/summernote-bs4.css" rel="stylesheet">
-
+    <link href="../assets/lib/datatables/jquery.dataTables.css" rel="stylesheet">
+    <link href="../assets/lib/select2/css/select2.min.css" rel="stylesheet">
+    
     <!-- Starlight CSS -->
     <link rel="stylesheet" href="../assets/css/starlight.css">
 </head>
@@ -133,6 +135,12 @@ $end = end($self_explode);
                 <div class="sl-menu-item">
                     <i class="menu-item-icon fa fa-quote-left tx-20"></i>
                     <span class="menu-item-label">Testimonials</span>
+                </div><!-- menu-item -->
+            </a><!-- sl-menu-link -->
+            <a href="messages-list.php" class="sl-menu-link <?= $end == 'messages-list.php' ? 'active' : '' ?>">
+                <div class="sl-menu-item">
+                    <i class="menu-item-icon fa fa-envelope tx-20"></i>
+                    <span class="menu-item-label">Contacts</span>
                 </div><!-- menu-item -->
             </a><!-- sl-menu-link -->
 

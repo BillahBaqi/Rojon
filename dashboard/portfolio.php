@@ -32,7 +32,7 @@ $portfolio_query = mysqli_query($db_connection, $portfolio_select);
                 <button type="button" class="btn btn-primary"><i class="fa fa-plus">Add Services</i></button>
             </a>
             <div class="table-responsive">
-                <table class="table mg-b-8">
+                <table id="datatable1" class="table responsive mg-b-8">
                     <thead>
                         <tr>
                             <th>SL</th>
@@ -42,27 +42,29 @@ $portfolio_query = mysqli_query($db_connection, $portfolio_select);
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <?php
-                    $select_portfolio = "SELECT * FROM portfolio INNER JOIN categories on portfolio.category_id = categories.id  WHERE portfolio.trash_status = 1 ORDER BY portfolio.p_id ASC";
-                    $select_portfolio_query = mysqli_query($db_connection, $select_portfolio);
-                    ?>
-                    <?php foreach ($select_portfolio_query as $key => $portfolio_value) : ?>
+                    <tbody>
+                        <?php
+                        $select_portfolio = "SELECT * FROM portfolio INNER JOIN categories on portfolio.category_id = categories.id  WHERE portfolio.trash_status = 1 ORDER BY portfolio.p_id ASC";
+                        $select_portfolio_query = mysqli_query($db_connection, $select_portfolio);
+                        ?>
+                        <?php foreach ($select_portfolio_query as $key => $portfolio_value) : ?>
 
-                        <tr>
-                            <td><?= ++$key ?></td>
-                            <td>
-                            <?= $portfolio_value['name'] ?>
-                            </td>
-                            <td><?= $portfolio_value['project'] ?></td>
-                            <td><?= $portfolio_value['title'] ?></td>
-                            <td>
-                                <a href="portfolio-edit.php?edit-id=<?= $portfolio_value['p_id'] ?>" class="btn btn-warning"><i class="fa fa-edit" name="portfolio-id" value="<?= $portfolio_value['id'] ?>"></i> Edit</a>
+                            <tr>
+                                <td><?= ++$key ?></td>
+                                <td>
+                                    <?= $portfolio_value['name'] ?>
+                                </td>
+                                <td><?= $portfolio_value['project'] ?></td>
+                                <td><?= $portfolio_value['title'] ?></td>
+                                <td>
+                                    <a href="portfolio-edit.php?edit-id=<?= $portfolio_value['p_id'] ?>" class="btn btn-warning"><i class="fa fa-edit" name="portfolio-id" value="<?= $portfolio_value['id'] ?>"></i> Edit</a>
 
-                                <a href="portfolio-delete.php?id=<?= $portfolio_value['p_id'] ?>" onclick="return confirm('Are you sure?')" class="btn  btn-danger"><i class="fa fa-trash"></i> Delete</a>
-                            </td>
-                        </tr>
+                                    <a href="portfolio-delete.php?id=<?= $portfolio_value['p_id'] ?>" onclick="return confirm('Are you sure?')" class="btn  btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                                </td>
+                            </tr>
 
-                    <?php endforeach ?>
+                        <?php endforeach ?>
+                    </tbody>
                 </table>
             </div>
         </div>

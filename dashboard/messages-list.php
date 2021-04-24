@@ -23,10 +23,11 @@ $messages_query = mysqli_query($db_connection, $select);
                 .readmessage td {
                     background: white;
                     font-weight: 700;
+                    z-index: 9999;
                 }
             </style>
 
-            <div class="table-wrapper">
+            <div class="table-wrapper ">
                 <?php
                 if (isset($_SESSION['message-delete'])) { ?>
                     <p class="text-danger">
@@ -35,14 +36,9 @@ $messages_query = mysqli_query($db_connection, $select);
                 <?php }
                 unset($_SESSION['message-delete']);  ?>
 
-                <table class="table mg-b-8">
+                <table id="datatable1" class="table display responsive">
                     <thead>
                         <tr>
-                            <!-- <th>
-                                <label class="ckbox mg-b-0">
-                                    <input type="checkbox"><span></span>
-                                </label>
-                            </th> -->
                             <th>SL</th>
                             <th>Name</th>
                             <th>Email</th>
@@ -51,35 +47,33 @@ $messages_query = mysqli_query($db_connection, $select);
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <?php
-                    foreach ($messages_query as $key => $messages_value) { ?>
+                    <tbody>
 
-                        <tr class="
-                            <?php if ($messages_value['read_status'] == 2) : ?>
-                            
-                            readmessage
-                            
+                        <?php
+                        foreach ($messages_query as $key => $messages_value) { ?>
+                            <tr class="<?php if ($messages_value['read_status'] == 2) : ?>                            
+                            readmessage                            
                             <?php endif ?>">
-                            <td><?= ++$key ?></td>
-                            <td><?= $messages_value['name'] ?></td>
-                            <td><?= $messages_value['email'] ?></td>
-                            <td><?= $messages_value['messages'] ?></td>
-                            <td>
-                                <?php if ($messages_value['read_status'] == 1) : ?>
-                                    <a href="messages-status.php?messages_id=<?= $messages_value['id'] ?>" class=" btn btn-success" width="70px">
-                                        Read</a>
-                                <?php else : ?>
-                                    <a href="messages-status.php?messages_id=<?= $messages_value['id'] ?>" class=" btn btn-danger" width="70px">Unread</a>
-                                <?php endif ?>
-                            </td>
-                            <td>
-                                <a href="messages-delete.php?messages_id=<?= $messages_value['id']; ?>" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a>
-                            </td>
-                        </tr>
-                    <?php }
-                    ?>
 
-
+                                <td><?= ++$key ?></td>
+                                <td><?= $messages_value['name'] ?></td>
+                                <td><?= $messages_value['email'] ?></td>
+                                <td><?= $messages_value['messages'] ?></td>
+                                <td>
+                                    <?php if ($messages_value['read_status'] == 1) : ?>
+                                        <a href="messages-status.php?messages_id=<?= $messages_value['id'] ?>" class=" btn btn-success" width="70px">
+                                            Read</a>
+                                    <?php else : ?>
+                                        <a href="messages-status.php?messages_id=<?= $messages_value['id'] ?>" class=" btn btn-danger" width="70px">Unread</a>
+                                    <?php endif ?>
+                                </td>
+                                <td>
+                                    <a href="messages-delete.php?messages_id=<?= $messages_value['id']; ?>" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        <?php }
+                        ?>
+                    </tbody>
                 </table>
             </div><!-- table-wrapper -->
         </div><!-- card -->

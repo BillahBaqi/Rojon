@@ -15,10 +15,14 @@
 <script src="../assets/lib/bootstrap/bootstrap.js"></script>
 <script src="../assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
 <script src="../assets/lib/highlightjs/highlight.pack.js"></script>
-<script src="../assets/lib/datatables/jquery.dataTables.js"></script>
 <script src="../assets/lib/medium-editor/medium-editor.js"></script>
 <script src="../assets/lib/summernote/summernote-bs4.min.js"></script>
 <script src="../assets/js/show.password.js"></script>
+<script src="../assets/lib/datatables-responsive/dataTables.responsive.js"></script>
+<script src="../assets/lib/datatables/jquery.dataTables.js"></script>
+<script src="../assets/lib/select2/js/select2.min.js"></script>
+<script src="../assets/js/starlight.js"></script>
+
 <script>
   $(function() {
     'use strict';
@@ -48,12 +52,6 @@
       }
     });
 
-    $('#datatable2').DataTable({
-      bLengthChange: false,
-      searching: false,
-      responsive: true
-    });
-
     // Select2
     $('.dataTables_length select').select2({
       minimumResultsForSearch: Infinity
@@ -61,9 +59,7 @@
 
   });
 </script>
-<script src="../assets/lib/datatables-responsive/dataTables.responsive.js"></script>
-<script src="../assets/lib/select2/js/select2.min.js"></script>
-<script src="../assets/js/starlight.js"></script>
+
 
 </body>
 
